@@ -537,31 +537,9 @@ footer::before {
     text-align: center;
 }
 
-.footer-links {
-    margin-bottom: 30px;
-}
-
-.footer-links a {
-    color: #e5e7eb;
-    margin: 0 20px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    padding: 8px 16px;
-    border-radius: 8px;
-}
-
-.footer-links a:hover {
-    color: var(--accent-color);
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-}
-
 .copyright {
     color: #9ca3af;
     font-size: 0.95rem;
-    padding-top: 25px;
-    border-top: 1px solid #374151;
     opacity: 0.8;
 }
 
@@ -669,7 +647,6 @@ footer::before {
         width: 100%;
         padding: 16px 25px;
     }
-    
 }
 
 @media (max-width: 480px) {
@@ -738,8 +715,6 @@ footer::before {
     }
 
     .footer-links a {
-        margin: 0 15px;
-        padding: 6px 12px;
+        display: none;
     }
-    
 }
