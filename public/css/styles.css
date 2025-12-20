@@ -272,9 +272,14 @@ body {
     color: var(--primary-color);
 }
 
+.input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
 .form-group input {
     width: 100%;
-    padding: 18px 20px;
+    padding: 18px 50px 18px 20px;
     border: 2px solid var(--border-color);
     border-radius: 12px;
     font-size: 16px;
@@ -288,6 +293,32 @@ body {
     box-shadow: 0 0 0 4px rgba(74, 111, 165, 0.15);
     outline: none;
     transform: translateY(-2px);
+}
+
+.clear-input-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px 8px;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    display: none;
+}
+
+.clear-input-btn:hover {
+    color: var(--error-color);
+    background-color: rgba(239, 68, 68, 0.1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.input-wrapper input:not(:placeholder-shown) ~ .clear-input-btn {
+    display: block;
 }
 
 .btn {
@@ -366,19 +397,57 @@ body {
     transition: all 0.3s ease;
 }
 
-.result h3 {
+.result-header {
     margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.result h3 {
     color: var(--text-color);
     font-size: 1.3rem;
     display: flex;
     align-items: center;
     font-weight: 700;
+    margin: 0;
 }
 
 .result h3 i {
     margin-right: 12px;
     color: var(--primary-color);
     font-size: 1.2rem;
+}
+
+.copy-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.result.success .copy-btn {
+    display: flex;
+}
+
+.copy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.copy-btn.copied {
+    background: linear-gradient(135deg, var(--success-color), #059669);
 }
 
 .result-content {
@@ -439,9 +508,9 @@ body {
 
 .features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 35px;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -589,11 +658,13 @@ footer::before {
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
+    
     100% { transform: rotate(360deg); }
 }
 
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
+    
     25% { transform: translateX(-5px); }
     75% { transform: translateX(5px); }
 }
@@ -662,14 +733,24 @@ footer::before {
     }
 
     .form-group input {
-        padding: 16px 18px;
+        padding: 16px 50px 16px 18px;
     }
 
     .btn {
         width: 100%;
         padding: 16px 25px;
     }
-    
+
+    .result-header {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .copy-btn {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -698,7 +779,7 @@ footer::before {
     }
 
     .form-group input {
-        padding: 15px;
+        padding: 15px 45px 15px 15px;
         font-size: 15px;
     }
 
@@ -741,5 +822,4 @@ footer::before {
         margin: 0 15px;
         padding: 6px 12px;
     }
-    
 }
